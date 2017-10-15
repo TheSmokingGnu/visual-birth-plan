@@ -9,6 +9,7 @@
     "npm": ">=3"
   },
   "scripts": {
+    "start": "build",
     "precommit": "lint-staged",
     "build": "cross-env NODE_ENV=production npm run clean && npm run test && npm run compile",
     "build:parts": "npm run sass && npm run compile",

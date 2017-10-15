@@ -14,5 +14,3 @@ deploy:
   app: visual-birth-plan
   on:
     repo: TheSmokingGnu/visual-birth-plan
-  run:
-    - "npm run build"
