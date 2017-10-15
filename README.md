@@ -1,5 +1,7 @@
 # visual-birth-plan
 
+[![Build Status](https://travis-ci.org/TheSmokingGnu/visual-birth-plan.svg?branch=master)](https://travis-ci.org/TheSmokingGnu/visual-birth-plan)
+
 > Easy to understand birth plan creator
 
 ## Build Setup
