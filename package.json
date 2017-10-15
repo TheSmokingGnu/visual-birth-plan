@@ -9,7 +9,7 @@
     "npm": ">=3"
   },
   "scripts": {
-    "start": "http-server dist/ -p 80",
+    "start": "node server.js",
     "precommit": "lint-staged",
     "heroku-postbuild": "npm run build",
     "build": "cross-env NODE_ENV=production npm run clean && npm run compile",
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "axios": "~0.16.2",
+    "fastify": "^0.30.2",
     "vue": "~2.4.2",
     "vue-class-component": "~5.0.2",
     "vue-property-decorator": "~5.2.1",
