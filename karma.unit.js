@@ -24,6 +24,12 @@ module.exports = function(config) {
     mime: {
       'text/x-typescript': ['ts']
     },
-    singleRun: true
+    singleRun: true,
+    customLaunchers: {
+      Chrome_travis_ci: {
+          base: 'Chrome',
+          flags: ['--no-sandbox']
+      }
+    }
   });
 };
