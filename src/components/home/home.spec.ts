@@ -9,13 +9,21 @@ describe('Home component', () => {
     directiveTest = new ComponentTest('<div><home></home></div>', { 'home': HomeComponent });
   });
 
-  it('should render correct contents', async () => {
+  it('should render correct package', async () => {
     directiveTest.createComponent();
     await directiveTest.execute((vm) => {
       debugger;
       const mode = process.env.ENV;
-      expect(vm.$el.querySelector('.mode').textContent).to.equal(`${mode} mode`);
-      expect(vm.$el.querySelector('.package').textContent).to.equal('vue-webpack-typescript');
+      expect(vm.$el.querySelector('h1').textContent).to.equal('Start using the visual birth plan');
+    });
+  });
+
+  it('should render the correct text', async () => {
+    directiveTest.createComponent();
+    await directiveTest.execute((vm) => {
+      debugger;
+      const mode = process.env.ENV;
+      expect(vm.$el.querySelector('h2').textContent).to.equal(`10 easy steps to create your birth plan ready for the hospital`);
     });
   });
 });

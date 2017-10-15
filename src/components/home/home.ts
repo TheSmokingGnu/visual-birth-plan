@@ -8,7 +8,7 @@ import './home.scss';
 })
 export class HomeComponent extends Vue {
 
-    package: string = 'vue-webpack-typescript';
+    package: string = 'visual birth plan';
     repo: string = 'https://github.com/ducksoupdev/vue-webpack-typescript';
     mode: string = process.env.ENV;
 

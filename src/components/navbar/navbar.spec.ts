@@ -83,4 +83,17 @@ describe('Navbar component', () => {
     });
   });
 
+  describe('elements on page should be correct', () => {
+    beforeEach(async () => {
+      directiveTest.createComponent({ router: router });
+
+    });
+
+    it('should render correct about contents', async () => {
+      await directiveTest.execute((vm) => {
+        expect(vm.$el.querySelector('.navbar-brand').textContent).to.equal('Visual birth plan');
+      });
+    });
+  });
+
 });

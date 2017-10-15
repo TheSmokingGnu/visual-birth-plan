@@ -2,7 +2,7 @@
 const fastify = require('fastify')()
 var serveStatic = require('serve-static');
 
-// Declare a route
+// Serve the vue files.
 fastify.use(serveStatic(__dirname + "/dist"));
 
 var port = +process.env.PORT || 3000;
