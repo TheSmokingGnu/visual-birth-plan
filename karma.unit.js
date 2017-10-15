@@ -1,6 +1,8 @@
 var webpackConfig = require('./config/webpack.config.test');
 
 module.exports = function(config) {
+
+  var browser =  process.env.TRAVIS ? 'Chrome_travis_ci': 'Chrome';
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai', 'sinon'],
@@ -18,7 +20,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: [browser],
     mime: {
       'text/x-typescript': ['ts']
     },
