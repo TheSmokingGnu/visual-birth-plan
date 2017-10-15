@@ -9,8 +9,9 @@
     "npm": ">=3"
   },
   "scripts": {
-    "start": "npm run build && npm run serve",
+    "start": "http-server dist/ -p 80",
     "precommit": "lint-staged",
+    "heroku-postbuild": "npm run build",
     "build": "cross-env NODE_ENV=production npm run clean && npm run compile",
     "build:parts": "npm run sass && npm run compile",
     "ci:teamcity": "karma --env=tc start karma.coverage.js && npm run coverage:remap",
