@@ -38,6 +38,7 @@
   "dependencies": {
     "axios": "~0.16.2",
     "fastify": "^0.30.2",
+    "froala-design-blocks": "^1.0.0",
     "vue": "~2.4.2",
     "vue-class-component": "~5.0.2",
     "vue-property-decorator": "~5.2.1",

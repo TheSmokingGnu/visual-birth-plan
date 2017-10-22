@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import './sass/main.scss';
 
 import { HomeComponent } from './components/home';
+import { ChoiceComponent } from './components/choice';
 import { AboutComponent } from './components/about';
 import { ListComponent } from './components/list';
 import { NavbarComponent } from './components/navbar';
@@ -16,6 +17,7 @@ let router = new VueRouter({
     { path: '/', component: HomeComponent },
     { path: '/about', component: AboutComponent },
     { path: '/list', component: ListComponent },
+    { path: '/choice', component: ChoiceComponent },
   ]
 });
 
