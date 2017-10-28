@@ -12,7 +12,7 @@ export class CutCordPage extends PageContent implements ChoicePage {
       new Image(`cut-cord/mum`, 27, 'Mum cut the cord'),
       new Image(`cut-cord/you-choose`, 28, 'Your choice cut the cord')
     ],
-    'cut-cord',
-    'Who would you like to catch the baby?');
+    'plan',
+    'Who would you like to cut the babies cord?');
   }
 }

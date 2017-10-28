@@ -15,11 +15,6 @@ export class ChoiceComponent extends Vue {
   lookup: Lookup = new Lookup();
   page: ChoicePage;
 
-  constructor() {
-    super();
-  }
-
-
   /**
    * Overridden lifecycle event only ran when component
    * has been created, as the route can't be accessed until then

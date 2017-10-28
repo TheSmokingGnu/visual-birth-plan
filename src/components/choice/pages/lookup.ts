@@ -1,12 +1,14 @@
+import { ChoicePage } from './choice-page';
+import { Image } from '../attributes/image';
 import { StudentPage } from './students';
 import { FeelPage } from './feel';
 import { WherePage } from './where';
-import {TypeOfBirthPage} from './type-of-birth';
-import {HelpPage} from './help';
-import {NumberOfBabiesPage} from './number-of-babies';
-import {ExaminationsPage} from './examinations';
-import {CatchPage} from './catch';
-import {CutCordPage} from './cut-cord';
+import { TypeOfBirthPage } from './type-of-birth';
+import { HelpPage } from './help';
+import { NumberOfBabiesPage } from './number-of-babies';
+import { ExaminationsPage } from './examinations';
+import { CatchPage } from './catch';
+import { CutCordPage } from './cut-cord';
 
 
 
@@ -19,6 +21,10 @@ export class Lookup {
   'number-of-babies': NumberOfBabiesPage = new NumberOfBabiesPage();
   examine: ExaminationsPage = new ExaminationsPage();
   catch: CatchPage = new CatchPage();
- 'cut-cord': CutCordPage = new CutCordPage();
+  'cut-cord': CutCordPage = new CutCordPage();
+
+  getCorrectImage(page: ChoicePage, pageValue: number): Image {
+    return page.imgRefs.filter(value => (1 << value.position) & pageValue).pop();
+  }
 
 }
