@@ -1,4 +1,3 @@
-import { ChoiceComponent } from '../choice/choice';
 import { expect } from 'chai';
 import { HomeComponent } from './home';
 import { ComponentTest } from '../../util/component-test';

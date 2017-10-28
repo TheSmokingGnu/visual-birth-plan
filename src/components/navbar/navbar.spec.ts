@@ -66,34 +66,4 @@ describe('Navbar component', () => {
     });
   });
 
-  describe('When clicking the list link', () => {
-    beforeEach(async () => {
-      directiveTest.createComponent({ router: router });
-
-      await directiveTest.execute((vm) => {
-        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/list"]');
-        anchor.click();
-      });
-    });
-
-    it('should render correct about contents', async () => {
-      await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.list').textContent).to.equal('List');
-      });
-    });
-  });
-
-  describe('elements on page should be correct', () => {
-    beforeEach(async () => {
-      directiveTest.createComponent({ router: router });
-
-    });
-
-    it('should render correct about contents', async () => {
-      await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('.navbar-brand').textContent).to.equal('Visual birth plan');
-      });
-    });
-  });
-
 });

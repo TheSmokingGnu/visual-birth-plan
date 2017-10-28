@@ -1,25 +1,47 @@
+import Component from 'vue-class-component';
+import VueRouter from 'vue-router';
+import Vue from 'vue';
+
+import { Image } from './attributes/image';
 import { expect } from 'chai';
 import { ChoiceComponent } from './choice';
 import { ComponentTest } from '../../util/component-test';
+@Component({
+  template: require('./choice.html')
+})
+class MockChoiceComponent extends ChoiceComponent {
+
+  constructor() {
+    super();
+  }
+  created() {
+    super.created();
+  }
+}
 
 describe('Choice component', () => {
   let directiveTest: ComponentTest;
+  let router: VueRouter;
+
 
   beforeEach(() => {
-    directiveTest = new ComponentTest('<div><choice></choice></div>', { 'choice': ChoiceComponent });
-  });
+    Vue.use(VueRouter);
 
-  it('should render correct package', async () => {
-    directiveTest.createComponent();
-    await directiveTest.execute((vm) => {
-      expect(vm.$el.querySelector('div').textContent).to.equal('How are you feeling about the birth?   ');
+
+    directiveTest = new ComponentTest('<div><choice></choice></div>', { 'choice': MockChoiceComponent });
+    router = new VueRouter({
+      routes: [
+        { path: '/choice/:pageName', component: MockChoiceComponent },
+      ]
     });
+    router.push('choice/feel');
   });
 
-  it('should render an image', async () => {
-    directiveTest.createComponent();
+  it('should render on created', async () => {
+    debugger;
+    directiveTest.createComponent({ router: router });
     await directiveTest.execute((vm) => {
-      expect(!!vm.$el.querySelector('img')).to.be.true;
+      expect(vm.$el.querySelector('.container').textContent).to.equal('How are you feeling about the birth?  ');
     });
   });
 });

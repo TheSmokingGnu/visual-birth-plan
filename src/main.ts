@@ -6,7 +6,7 @@ import './sass/main.scss';
 import { HomeComponent } from './components/home';
 import { ChoiceComponent } from './components/choice';
 import { AboutComponent } from './components/about';
-import { ListComponent } from './components/list';
+import { PlanComponent } from './components/plan';
 import { NavbarComponent } from './components/navbar';
 
 // register the plugin
@@ -16,8 +16,8 @@ let router = new VueRouter({
   routes: [
     { path: '/', component: HomeComponent },
     { path: '/about', component: AboutComponent },
-    { path: '/list', component: ListComponent },
-    { path: '/choice', component: ChoiceComponent },
+    { path: '/plan', component: PlanComponent },
+    { path: '/choice/:pageName', component: ChoiceComponent },
   ]
 });
 

@@ -1,18 +1,11 @@
 <div class="container">
-
-    <div class="row">
-        <h2>How are you feeling about the birth?<h2>
-        <div class="col-sm-12 col-md-3">
-            <img src="assets/img/choice/feel/excited.jpg" class="img-responsive" alt="feel-confident">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img src="assets/img/choice/feel/confident.jpg" class="img-responsive" alt="feel-confident">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img src="assets/img/choice/feel/anxious.jpg" class="img-responsive" alt="feel-confident">
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <img src="assets/img/choice/feel/scared.jpg" class="img-responsive" alt="feel-confident">
+  <div class="row">
+        <h3>{{page.title}}</h3>
+        <br>
+        <div :class="dynamicClass" v-for="imgRef in page.imgRefs">
+          <router-link :to="getNextPage(imgRef)">
+            <img :src="imgRef.ref" class="img-responsive" :alt="imgRef.altText">
+          </router-link>
         </div>
     </div>
 </div>
