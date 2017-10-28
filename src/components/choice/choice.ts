@@ -26,9 +26,8 @@ export class ChoiceComponent extends Vue {
   }
 
   @Watch('$route.path')
-  pathChanged() {
-    this.updatePageFromData();
-
+  pathChanged(route) {
+      this.updatePageFromData();
   }
 
   updatePageFromData() {

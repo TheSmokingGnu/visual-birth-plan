@@ -25,6 +25,5 @@ export class PlanComponent extends Vue {
 
       }
     }
-    console.log(this.allSections);
   }
 }
