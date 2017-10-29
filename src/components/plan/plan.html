@@ -1,5 +1,15 @@
-<div class="a4">
-    <div v-for="section in allSections">
-      <img :src="section.ref" :alt="section.altText" />
+<div v-if ="noPlan">
+<h3>No plan yet, go back to <a href="/home">home</a></h3>
+</div>
+
+<div v-else class="a4">
+  <div v-for="section in brokenUpSections">
+    <div class="row">
+      <div :class="getRowClass(section)" v-for="imgRef in section">
+        <router-link :to="getImgRefPageLink(imgRef)">
+          <img :src="imgRef.ref" class="img-responsive" :alt="imgRef.altText">
+        </router-link>
+      </div>
     </div>
+  </div>
 </div>

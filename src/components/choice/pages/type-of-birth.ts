@@ -7,9 +7,9 @@ export class TypeOfBirthPage extends PageContent implements ChoicePage {
 
   constructor() {
     super([
-      new Image(`type-of-birth/natural`, 9, 'Natural birth'),
-      new Image(`type-of-birth/medical-management`, 10, 'Medical management'),
-      new Image(`type-of-birth/caesarean`, 11, 'Caesarean')
+      new Image(`type-of-birth/natural`, 'Natural birth'),
+      new Image(`type-of-birth/medical-management`, 'Medical management'),
+      new Image(`type-of-birth/caesarean`, 'Caesarean')
     ],
     'help',
     'What type of birth would you prefer?');

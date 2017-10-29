@@ -9,10 +9,10 @@ export class WherePage extends PageContent implements ChoicePage {
 
   constructor() {
     super([
-      new Image(`where/home-birth`, 5, 'Home birth'),
-      new Image(`where/hospital-birth`, 6, 'Hospital birth'),
-      new Image(`where/midwife-led`, 7, 'Midwife led unit'),
-      new Image(`where/theater-birth`, 8, 'Theater birth')
+      new Image(`where/home-birth`, 'Home birth'),
+      new Image(`where/hospital-birth`, 'Hospital birth'),
+      new Image(`where/midwife-led`, 'Midwife led unit'),
+      new Image(`where/theater-birth`, 'Theater birth')
     ],
       'students',
     'Where do you want to give birth?');

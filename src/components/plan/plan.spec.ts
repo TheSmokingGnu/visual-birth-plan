@@ -33,7 +33,7 @@ describe('Plan component', () => {
   it('should set the feel section to excited', async () => {
     directiveTest.createComponent({router: router});
     await directiveTest.execute((vm) => {
-      expect(vm.$el.querySelector('img').alt).to.equal('feeling excited');
+      expect(vm.$el.querySelector('img').alt).to.equal('feeling confident');
     });
   });
 });

@@ -23,6 +23,20 @@ export class Lookup {
   catch: CatchPage = new CatchPage();
   'cut-cord': CutCordPage = new CutCordPage();
 
+  constructor() {
+    let position = 0;
+    for (let page in this) {
+      if (this.hasOwnProperty(page)) {
+        const element: ChoicePage = this[page];
+        element.imgRefs.map(value =>  {
+          value.position = position;
+          position++;
+          return value;
+        });
+      }
+    }
+  }
+
   getCorrectImage(page: ChoicePage, pageValue: number): Image {
     return page.imgRefs.filter(value => (1 << value.position) & pageValue).pop();
   }

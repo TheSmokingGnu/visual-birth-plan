@@ -4,29 +4,55 @@ import { Link } from './link';
 import { Logger } from '../../util/log';
 
 @Component({
-    template: require('./navbar.html')
+  template: require('./navbar.html')
 })
 export class NavbarComponent extends Vue {
 
-    protected logger: Logger;
+  protected logger: Logger;
 
-    inverted: boolean = true; // default value
+  inverted: boolean = true; // default value
 
-    object: { default: string } = { default: 'Default object property!' }; // objects as default values don't need to be wrapped into functions
+  object: { default: string } = { default: 'Default object property!' }; // objects as default values don't need to be wrapped into functions
 
-    links: Link[] = [
-        new Link('Home', '/'),
-        new Link('About', '/about'),
-        new Link('Plan', '/plan')
-    ];
+  links: Link[] = [
+    new Link('Home', '/'),
+    new Link('About', '/about'),
+    new Link('Plan', '/plan')
+  ];
 
-    @Watch('$route.path')
-    pathChanged() {
-        this.logger.info('Changed current path to: ' + this.$route.path);
+  @Watch('$route.path')
+  pathChanged() {
+    this.logger.info('Changed current path to: ' + this.$route.path);
+  }
+
+  mounted() {
+    if (!this.logger) this.logger = new Logger();
+    this.$nextTick(() => this.logger.info(this.object.default));
+  }
+
+  /**
+   * Add plan query string if available
+   *
+   *
+   * @param {Link} link
+   * @returns
+   * @memberof NavbarComponent
+   */
+  getPath(link: Link) {
+    let path: string = link.path;
+    const plan = this.$route.query.plan;
+    if (plan) {
+      path += '?plan=' + plan;
     }
+    return path;
+  }
 
-    mounted() {
-        if (!this.logger) this.logger = new Logger();
-        this.$nextTick(() => this.logger.info(this.object.default));
-    }
+  /**
+   * Open the print dialog
+   *
+   * @memberof NavbarComponent
+   */
+  print() {
+    window.print();
+  }
 }

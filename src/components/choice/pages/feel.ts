@@ -6,10 +6,10 @@ import {ChoicePage} from './choice-page';
 export class FeelPage extends PageContent implements ChoicePage {
   constructor() {
     super([
-      new Image(`feel/excited`, 1, 'feeling excited'),
-      new Image(`feel/confident`, 2, 'feeling confident'),
-      new Image(`feel/anxious`, 3, 'feeling anxious'),
-      new Image(`feel/scared`, 4, 'feeling scared')
+      new Image(`feel/excited`, 'feeling excited'),
+      new Image(`feel/confident`, 'feeling confident'),
+      new Image(`feel/anxious`, 'feeling anxious'),
+      new Image(`feel/scared`, 'feeling scared')
     ],
       'where',
     'How are you feeling about the birth?');

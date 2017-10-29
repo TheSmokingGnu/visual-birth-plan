@@ -7,8 +7,8 @@ export class StudentPage extends PageContent implements ChoicePage {
 
   constructor() {
     super([
-      new Image(`students/ok`, 7, 'Students OK'),
-      new Image(`students/not-ok`, 8, 'Students not OK')
+      new Image(`students/ok`, 'Students OK'),
+      new Image(`students/not-ok`,  'Students not OK')
     ],
     'type-of-birth',
     'Do you mind medical students present?');

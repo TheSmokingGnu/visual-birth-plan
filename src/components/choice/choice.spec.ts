@@ -41,7 +41,7 @@ describe('Choice component', () => {
     debugger;
     directiveTest.createComponent({ router: router });
     await directiveTest.execute((vm) => {
-      expect(vm.$el.querySelector('.container').textContent).to.equal('How are you feeling about the birth?  ');
+      expect(vm.$el.querySelector('#title').textContent).to.equal('How are you feeling about the birth? ');
     });
   });
 });

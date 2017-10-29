@@ -2,6 +2,7 @@ export class Image {
   ref: String;
   position: number;
   altText: String;
+  pageName: String;
 
   /**
    * Creates an instance of Image.
@@ -9,9 +10,8 @@ export class Image {
    * @param {number} position bitwise position
    * @memberof Image
    */
-  constructor(ref: String, position: number, altText: String) {
+  constructor(ref: String, altText: String) {
     this.ref = `assets/img/choice/${ref}.png`;
-    this.position = position;
     this.altText = altText;
   }
 }
