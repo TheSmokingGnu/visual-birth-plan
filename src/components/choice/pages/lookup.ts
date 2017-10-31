@@ -32,7 +32,7 @@ export class Lookup {
   'special-medical': SpecialMedical = new SpecialMedical();
   'special-spiritual': SpecialSpiritual = new SpecialSpiritual();
   interpreter: Interpreter = new Interpreter();
-  quiet: Quiet = new Quiet();
+  'quiet-please': Quiet = new Quiet();
 
   constructor() {
     let position = 0;
