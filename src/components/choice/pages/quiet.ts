@@ -6,7 +6,7 @@ export class Quiet extends PageContent {
 
   constructor() {
     super([
-      new Image(`quiet/quiet`, 'Quiet room'),
+      new Image(`quiet/quiet-please`, 'Quiet room'),
     ],
     '/plan',
     'Do you want a quiet room with minimal chatting between staff?');
