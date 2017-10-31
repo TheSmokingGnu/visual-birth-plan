@@ -1,4 +1,9 @@
-import { Cultural } from './cultural';
+import { Quiet } from './quiet';
+import { Interpreter } from './interpreter';
+import { Cultural } from './special/cultural';
+import { SpecialMedical } from './special/medical';
+import { SpecialSpiritual } from './special/spiritual';
+
 import { ChoicePage } from './choice-page';
 import { Image } from '../attributes/image';
 import { StudentPage } from './students';
@@ -24,6 +29,10 @@ export class Lookup {
   catch: CatchPage = new CatchPage();
   'cut-cord': CutCordPage = new CutCordPage();
   cultural: Cultural = new Cultural();
+  'special-medical': SpecialMedical = new SpecialMedical();
+  'special-spiritual': SpecialSpiritual = new SpecialSpiritual();
+  interpreter: Interpreter = new Interpreter();
+  quiet: Quiet = new Quiet();
 
   constructor() {
     let position = 0;

@@ -1,6 +1,6 @@
-import { PageContent } from '../attributes/page-content';
-import { Image } from '../attributes/image';
-import {ChoicePage} from './choice-page';
+import { PageContent } from '../../attributes/page-content';
+import { Image } from '../../attributes/image';
+import {ChoicePage} from '../choice-page';
 
 
 export class Cultural extends PageContent implements ChoicePage {
@@ -9,7 +9,7 @@ export class Cultural extends PageContent implements ChoicePage {
     super([
       new Image(`special/cultural`, 'Special cultural requirement'),
     ],
-    '/plan',
+    'special-medical',
     'Do you have any special cultural requirement?');
   }
 }

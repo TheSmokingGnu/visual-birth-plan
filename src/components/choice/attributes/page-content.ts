@@ -1,6 +1,8 @@
 import {Image} from './image';
+import {ChoicePage} from '../pages/choice-page';
 
-export class PageContent {
+
+export class PageContent implements ChoicePage {
   imgRefs: Array<Image>;
   nextPage: String;
   title: String;
