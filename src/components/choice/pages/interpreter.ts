@@ -6,7 +6,7 @@ export class Interpreter extends PageContent {
 
   constructor() {
     super([
-      new Image(`interpreter/interpreter`, 'Interpreter is required'),
+      new Image(`interpreter/interpreter-required`, 'Interpreter is required'),
     ],
     'quiet-please',
     'Do you need an interpreter for the birth?');
