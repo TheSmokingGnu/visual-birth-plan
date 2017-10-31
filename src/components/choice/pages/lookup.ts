@@ -1,3 +1,4 @@
+import { Cultural } from './cultural';
 import { ChoicePage } from './choice-page';
 import { Image } from '../attributes/image';
 import { StudentPage } from './students';
@@ -22,6 +23,7 @@ export class Lookup {
   examine: ExaminationsPage = new ExaminationsPage();
   catch: CatchPage = new CatchPage();
   'cut-cord': CutCordPage = new CutCordPage();
+  cultural: Cultural = new Cultural();
 
   constructor() {
     let position = 0;

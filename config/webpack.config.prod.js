@@ -21,7 +21,7 @@ const purifyCss = new PurifyCSSPlugin({
   paths: glob.sync(path.join(__dirname, '../src/**/*.html')),
   purifyOptions: {
     info: true,
-    whitelist: []
+    whitelist: ['col-*', 'selected', 'img-responsive']
   }
 });
 
