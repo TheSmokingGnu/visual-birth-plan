@@ -14,3 +14,10 @@ deploy:
   app: visual-birth-plan
   on:
     repo: TheSmokingGnu/visual-birth-plan
+deploy:
+  local_dir: dist
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master

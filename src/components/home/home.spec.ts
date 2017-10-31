@@ -20,23 +20,6 @@ describe('Home component', () => {
     });
   });
 
-  it('should render correct package', async () => {
-    directiveTest.createComponent();
-    await directiveTest.execute((vm) => {
-      debugger;
-      const mode = process.env.ENV;
-      expect(vm.$el.querySelector('h1').textContent).to.equal('visual birth plan');
-    });
-  });
-
-  it('should render the correct text', async () => {
-    directiveTest.createComponent();
-    await directiveTest.execute((vm) => {
-      debugger;
-      const mode = process.env.ENV;
-      expect(vm.$el.querySelector('h2').textContent).to.equal(`A pictoral representation of your plan to give birth.`);
-    });
-  });
 
   describe('when clicking the start button', async () => {
     beforeEach( async () => {
