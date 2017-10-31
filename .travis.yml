@@ -8,16 +8,13 @@ install:
 script:
 - npm test
 deploy:
-  provider: heroku
-  api_key:
+ - provider: heroku
+   api_key:
     secure: JPwxNuAdlpP/8V2+NMWWyFek1psJbKTZ1zx2YyvKIpsPnnkEXgCVLAm2b4j2/NQrOhSRz4r4rhNrMQeQ9OFpsEvu0hnYu0FcEINNTupRfkWLTyMitZU7Ef5a8aXKHj+RUjrUzVuoJU7vrEipo/mZF3R1Kx/FgFQ3sgClMiIkcHoB4hgnTadNzH7PqlrUJNjKBVHPaaT2/ATPXu++/eiGgcgXepqEvJQ/94Hz3BzsHFHObf0h4G+nfmtWpO2doVW0RIUXBEaPbyETfz0jvZ7eSuPktj2E6MBglc2uzCRqpAaO7cziyF4dN9n/PMpyAov146GvGLmNz4Opcbql7vtl8zGzvuvf/U4NBWc6UfBDu0SM+9L/5Sw8gkjf3mNbWHegmXLzlzfH1N0pKU8zRG3DtEA/S37CEuN/DPRJ/XgtWwnv2GjAJanKn+BrB5pdOIOjxJr6cVaB/0r9KVwQlUNMWjyVEYD0WocHccKbrXgiCtWCM/y5G3bw7oHalnOmPuaTD3xD9c57kogR1OGdUe2jqiG7Tj8OBF44v8k4TbOKipjpOG3rQeq24TzrHXuoBZo9FSRyrRLmGcD44OsxiYGcLfm3D5D8Nfy7b5CAZ3FrR41dz7qp8c2o7uzLXIsO3EQeqyJ/sDyzo3SDzFgvhslDK6Aekiwe74C60lnN1A4bcf4=
-  app: visual-birth-plan
-  on:
+   app: visual-birth-plan
+ - provider: pages
+   local_dir: dist
+   skip_cleanup: true
+   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+   on:
     repo: TheSmokingGnu/visual-birth-plan
-deploy:
-  local_dir: dist
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
