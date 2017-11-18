@@ -14,9 +14,12 @@ export class ChoiceComponent extends Vue {
   dynamicClass: String = '12';
   lookup: Lookup = new Lookup();
   page: ChoicePage;
+  skipText: string;
 
   private planValueBefore: number;
   private newPlanValue: number;
+  private previousPage: string;
+  private valueAlreadySelected: boolean;
 
   /**
    * Overridden lifecycle event only ran when component
@@ -39,8 +42,9 @@ export class ChoiceComponent extends Vue {
     const sections = 12 / this.page.imgRefs.length;
     this.dynamicClass = `col-xs-12 col-sm-${sections}`;
     this.planValueBefore = +this.$route.query.plan;
-    const resetValue: number = this.minusValueForThisChoice();
-    this.newPlanValue = this.planValueBefore & resetValue;
+    this.newPlanValue = this.minusValueForThisChoice();
+    this.valueAlreadySelected = !!this.$route.query.complete;
+    this.skipText = this.valueAlreadySelected ? 'Remove Selection' : 'Skip to the next section';
   }
 
   /**
@@ -53,7 +57,7 @@ export class ChoiceComponent extends Vue {
    */
   getNextPage(image: Image): Object {
     return {
-      path: this.page.nextPage,
+      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
       query: {
         plan: (this.newPlanValue || 0) + (1 << image.position)
       }
@@ -69,9 +73,9 @@ export class ChoiceComponent extends Vue {
    */
   skip(): object {
     return {
-      path: this.page.nextPage,
+      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
       query: {
-        plan: this.planValueBefore
+        plan: this.newPlanValue
       }
     };
   }
@@ -100,7 +104,7 @@ export class ChoiceComponent extends Vue {
    */
   minusValueForThisChoice(): number {
     return this.page.imgRefs.reduce(
-      (acc, image) => acc - (1 & (1 << image.position)),
+      (acc, image) => acc & ~(1 << image.position),
       this.planValueBefore);
   }
 

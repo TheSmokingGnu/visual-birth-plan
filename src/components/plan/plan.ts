@@ -51,7 +51,7 @@ export class PlanComponent extends Vue {
   }
 
   getImgRefPageLink(image: Image) {
-    return `choice/${image.pageName}?plan=${this.$route.query.plan}`;
+    return `choice/${image.pageName}?plan=${this.$route.query.plan}&complete=true`;
   }
 }
 
