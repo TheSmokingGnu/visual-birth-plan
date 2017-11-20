@@ -34,16 +34,27 @@ export class PlanComponent extends Vue {
   }
 
   splitIntoThreeRows(allSections: Array<Image>): Array<Image[]> {
-    return allSections.reduce((acc, value, index, array) => {
-      if (index < Math.floor(array.length / 2)) {
+    const threeRows = allSections.reduce((acc, value, index, array) => {
+      if (index < 6 && index < Math.floor(array.length / 2)) {
         acc[0].push(value);
       }
-      else  {
+      else if (index < 12) {
         acc[1].push(value);
+      } else {
+        acc[2].push(value);
       }
 
       return acc;
     }, [new Array<Image>(), new Array<Image>(), new Array<Image>()]);
+
+    const lengthOfFirst = threeRows[0].length;
+
+    return threeRows.map(value => {
+      while (value.length !== lengthOfFirst) {
+        value.push(new Image('', ''));
+      }
+      return value;
+    });
   }
 
   getRowClass(section: Array<Image>) {
