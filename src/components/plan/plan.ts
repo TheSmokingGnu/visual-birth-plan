@@ -34,11 +34,14 @@ export class PlanComponent extends Vue {
   }
 
   splitIntoThreeRows(allSections: Array<Image>): Array<Image[]> {
+    let devisor =1;
+    devisor = allSections.length <= 12 ? 2 : 3;
+    let evenLength = Math.floor(allSections.length / 2);
     const threeRows = allSections.reduce((acc, value, index, array) => {
-      if (index < 6 && index < Math.floor(array.length / 2)) {
+      if (index < 6 && index < evenLength) {
         acc[0].push(value);
       }
-      else if (index < 12) {
+      else if (index < 12 && index < evenLength * 2) {
         acc[1].push(value);
       } else {
         acc[2].push(value);
@@ -50,8 +53,10 @@ export class PlanComponent extends Vue {
     const lengthOfFirst = threeRows[0].length;
 
     return threeRows.map(value => {
-      while (value.length !== lengthOfFirst) {
-        value.push(new Image('', ''));
+      if (value.length > 0) {
+        while (value.length !== lengthOfFirst) {
+          value.push(new Image('blank', 'blank'));
+        }
       }
       return value;
     });
