@@ -1,3 +1,8 @@
+/**
+ * @class Image
+ * @description
+ * Stores all information about the image.
+ */
 export class Image {
   ref: String;
   position: number;
@@ -7,7 +12,7 @@ export class Image {
   /**
    * Creates an instance of Image.
    * @param {String} ref location of image
-   * @param {number} position bitwise position
+   * @param {String} altText alternate text for the image
    * @memberof Image
    */
   constructor(ref: String, altText: String) {

@@ -52,4 +52,8 @@ export class Lookup {
     return page.imgRefs.filter(value => (1 << value.position) & pageValue).pop();
   }
 
+  isSelected(image: Image, plan: number): boolean {
+
+  }
+
 }

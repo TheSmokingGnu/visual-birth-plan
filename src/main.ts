@@ -5,7 +5,6 @@ import './sass/main.scss';
 
 import { HomeComponent } from './components/home';
 import { ChoiceComponent } from './components/choice';
-import { AboutComponent } from './components/about';
 import { PlanComponent } from './components/plan';
 import { NavbarComponent } from './components/navbar';
 
@@ -15,7 +14,6 @@ Vue.use(VueRouter);
 let router = new VueRouter({
   routes: [
     { path: '/', component: HomeComponent },
-    { path: '/about', component: AboutComponent },
     { path: '/plan', component: PlanComponent },
     { path: '/choice/:pageName', component: ChoiceComponent },
   ]

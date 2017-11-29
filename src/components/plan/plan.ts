@@ -9,12 +9,22 @@ import './plan.scss';
 @Component({
   template: require('./plan.html')
 })
+/**
+ * Sort the selected images into rows to fit onto an A4
+ * piece of paper
+ *
+ * @class PlanComponent
+ */
 export class PlanComponent extends Vue {
   lookup: Lookup = new Lookup();
   brokenUpSections: Array<Image[]>;
   feelSection: Image;
   noPlan: boolean;
 
+  /**
+   * On creation go through each image and check if
+   * it should be displayed based on the plan number.
+   */
   created(): void {
     const allSections = [];
     const planValue: number = +this.$route.query.plan;
@@ -34,14 +44,14 @@ export class PlanComponent extends Vue {
   }
 
   splitIntoThreeRows(allSections: Array<Image>): Array<Image[]> {
-    let devisor =1;
+    let devisor = 1;
     devisor = allSections.length <= 12 ? 2 : 3;
-    let evenLength = Math.floor(allSections.length / 2);
+    let evenLength = Math.ceil(allSections.length / 2);
     const threeRows = allSections.reduce((acc, value, index, array) => {
       if (index < 6 && index < evenLength) {
         acc[0].push(value);
       }
-      else if (index < 12 && index < evenLength * 2) {
+      else if (index < 12 && index <= evenLength * 2) {
         acc[1].push(value);
       } else {
         acc[2].push(value);

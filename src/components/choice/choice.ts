@@ -2,15 +2,22 @@ import { Location, RouteConfig } from 'vue-router/types/router';
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
 import { Image } from './attributes/image';
-
-import './choice.scss';
 import { ChoicePage } from './pages/choice-page';
 import { Lookup } from './pages/lookup';
+
+import './choice.scss';
 
 @Component({
   template: require('./choice.html')
 })
+/**
+ * @class ChoiceComponent
+ * @extends Vue
+ * @description
+ * Generic choice component
+ */
 export class ChoiceComponent extends Vue {
+  // default to full row width for the image
   dynamicClass: String = '12';
   lookup: Lookup = new Lookup();
   page: ChoicePage;
@@ -31,12 +38,18 @@ export class ChoiceComponent extends Vue {
     this.updatePageFromData();
   }
 
+  /**
+   * To change the pictures on the page when the parameter
+   * changes watch for a change in the path.
+   */
   @Watch('$route.path')
-  pathChanged(route) {
+  pathChanged() {
     this.updatePageFromData();
   }
 
-
+  /**
+   * Refresh the images on the page.
+   */
   updatePageFromData() {
     this.page = this.lookup[this.$route.params.pageName];
     const sections = 12 / this.page.imgRefs.length;
@@ -56,12 +69,9 @@ export class ChoiceComponent extends Vue {
    * @memberof ChoiceComponent
    */
   getNextPage(image: Image): Object {
-    return {
-      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
-      query: {
-        plan: (this.newPlanValue || 0) + (1 << image.position)
-      }
-    };
+    const newPage = this.pageMove();
+    newPage.query.plan += 1 << image.position;
+    return newPage;
   }
 
   /**
@@ -72,19 +82,15 @@ export class ChoiceComponent extends Vue {
    * @memberof ChoiceComponent
    */
   skip(): object {
-    return {
-      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
-      query: {
-        plan: this.newPlanValue
-      }
-    };
+    return this.pageMove();
   }
 
   /**
-   * Used for marking a choice as selected (with the border)
+   * Used for marking a choice as selected (with the border) See if the bit is set
+   * at the position value of each image.
    *
-   * @param {Image} image
-   * @returns {String}
+   * @param {Image} image to check if it has been selected
+   * @returns {String} either selected or just img-responsive
    * @memberof ChoiceComponent
    */
   isSelected(image: Image): String {
@@ -96,8 +102,7 @@ export class ChoiceComponent extends Vue {
   }
 
   /**
-   * For all of the choices on this page make sure the
-   * bits of the passed in value are set to 0
+   * For all of the choices on this page set to 0
    *
    * @returns {number} the value after setting bits to 0
    * @memberof ChoiceComponent
@@ -106,6 +111,18 @@ export class ChoiceComponent extends Vue {
     return this.page.imgRefs.reduce(
       (acc, image) => acc & ~(1 << image.position),
       this.planValueBefore);
+  }
+
+  /**
+   * Common logic to change the page
+   */
+  pageMove()  {
+    return {
+      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
+      query: {
+        plan: this.newPlanValue || 0
+      }
+    };
   }
 
 

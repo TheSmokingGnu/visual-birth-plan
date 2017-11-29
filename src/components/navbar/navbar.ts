@@ -16,14 +16,8 @@ export class NavbarComponent extends Vue {
 
   links: Link[] = [
     new Link('Home', '/'),
-    new Link('About', '/about'),
     new Link('Plan', '/plan')
   ];
-
-  @Watch('$route.path')
-  pathChanged() {
-    this.logger.info('Changed current path to: ' + this.$route.path);
-  }
 
   mounted() {
     if (!this.logger) this.logger = new Logger();

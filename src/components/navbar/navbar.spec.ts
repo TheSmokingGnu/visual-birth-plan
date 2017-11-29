@@ -27,13 +27,11 @@ describe('Navbar component', () => {
     directiveTest = new ComponentTest('<div><navbar></navbar><router-view>loading...</router-view></div>', { 'navbar': MockNavbarComponent });
 
     let homeComponent = { template: '<div class="home">Home</div>' };
-    let aboutComponent = { template: '<div class="about">About</div>' };
     let planComponent = { template: '<div class="plan">Plan</div>' };
 
     router = new VueRouter({
       routes: [
         { path: '/', component: homeComponent },
-        { path: '/about', component: aboutComponent },
         { path: '/plan', component: planComponent }
       ]
     });
@@ -45,24 +43,7 @@ describe('Navbar component', () => {
     await directiveTest.execute((vm) => { // ensure Vue has bootstrapped/run change detection
       debugger;
       assert.calledWith(loggerSpy, 'Default object property!');
-      expect(vm.$el.querySelectorAll('ul.nav li').length).to.equal(3);
-    });
-  });
-
-  describe('When clicking the about link', () => {
-    beforeEach(async () => {
-      directiveTest.createComponent({ router: router });
-
-      await directiveTest.execute((vm) => {
-        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/about"]');
-        anchor.click();
-      });
-    });
-
-    it('should render correct about contents', async () => {
-      await directiveTest.execute((vm) => {
-        expect(vm.$el.querySelector('div.about').textContent).to.equal('About');
-      });
+      expect(vm.$el.querySelectorAll('ul.nav li').length).to.equal(2);
     });
   });
 
