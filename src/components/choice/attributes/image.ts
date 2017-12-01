@@ -19,4 +19,8 @@ export class Image {
     this.ref = `assets/img/choice/${ref}.png`;
     this.altText = altText;
   }
+
+  isSelected(plan: number): boolean {
+    return !!((1 << this.position) & plan);
+  }
 }

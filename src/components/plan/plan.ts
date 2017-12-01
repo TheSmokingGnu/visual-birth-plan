@@ -26,11 +26,23 @@ export class PlanComponent extends Vue {
    * it should be displayed based on the plan number.
    */
   created(): void {
-    const allSections = [];
     const planValue: number = +this.$route.query.plan;
+    const allSections = this.getAllSelectedSections(this.lookup, planValue);
+    this.noPlan = allSections.length === 0;
+    this.brokenUpSections = this.splitIntoThreeRows(allSections);
+  }
+
+  /**
+   * Get all of the choices that have been made.
+   *
+   * @param lookup All pages and links to those pages.
+   * @param planValue numeric value of the plan
+   */
+  getAllSelectedSections(lookup: Lookup, planValue: number) {
+    const allSections = [];
     for (let page in this.lookup) {
       if (this.lookup.hasOwnProperty(page)) {
-        const section = this.lookup.getCorrectImage(this.lookup[page], planValue);
+        const section = this.lookup[page].imgRefs.filter(value => value.isSelected(planValue)).pop();
         if (section) {
           section.pageName = page;
           allSections.push(section);
@@ -38,11 +50,15 @@ export class PlanComponent extends Vue {
       }
     }
 
-    this.noPlan = allSections.length === 0;
-
-    this.brokenUpSections = this.splitIntoThreeRows(allSections);
+    return allSections;
   }
 
+  /**
+   * Split the images into up to three rows and make sure they
+   * are spaced evenly.
+   *
+   * @param allSections all selected choices
+   */
   splitIntoThreeRows(allSections: Array<Image>): Array<Image[]> {
     let devisor = 1;
     devisor = allSections.length <= 12 ? 2 : 3;
@@ -72,10 +88,20 @@ export class PlanComponent extends Vue {
     });
   }
 
+  /**
+   * Size and space the images depending on how many of the
+   * images there are.
+   * @param section answer to one of the questions.
+   */
   getRowClass(section: Array<Image>) {
     return `col-xs-12 col-sm-${Math.round(12 / section.length)}`;
   }
 
+  /**
+   * Get the link to the particular choice page so it can be
+   * altered if needed.
+   * @param image all image information
+   */
   getImgRefPageLink(image: Image) {
     return `choice/${image.pageName}?plan=${this.$route.query.plan}&complete=true`;
   }

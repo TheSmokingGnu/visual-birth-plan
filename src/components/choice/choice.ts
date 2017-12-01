@@ -22,6 +22,7 @@ export class ChoiceComponent extends Vue {
   lookup: Lookup = new Lookup();
   page: ChoicePage;
   skipText: string;
+  loaded: boolean= false;
 
   private planValueBefore: number;
   private newPlanValue: number;
@@ -58,6 +59,7 @@ export class ChoiceComponent extends Vue {
     this.newPlanValue = this.minusValueForThisChoice();
     this.valueAlreadySelected = !!this.$route.query.complete;
     this.skipText = this.valueAlreadySelected ? 'Remove Selection' : 'Skip to the next section';
+    this.loaded = true;
   }
 
   /**
@@ -95,7 +97,7 @@ export class ChoiceComponent extends Vue {
    */
   isSelected(image: Image): String {
     let className: string = 'img-responsive';
-    if ((1 << image.position) & this.planValueBefore) {
+    if (image.isSelected(this.planValueBefore)) {
       className += ' selected';
     }
     return className;

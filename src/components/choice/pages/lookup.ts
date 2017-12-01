@@ -48,12 +48,4 @@ export class Lookup {
     }
   }
 
-  getCorrectImage(page: ChoicePage, pageValue: number): Image {
-    return page.imgRefs.filter(value => (1 << value.position) & pageValue).pop();
-  }
-
-  isSelected(image: Image, plan: number): boolean {
-
-  }
-
 }
