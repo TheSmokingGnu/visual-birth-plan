@@ -1,14 +1,14 @@
-import { Location, RouteConfig } from 'vue-router/types/router';
-import Vue from 'vue';
-import { Component, Watch } from 'vue-property-decorator';
-import { Image } from './attributes/image';
-import { ChoicePage } from './pages/choice-page';
-import { Lookup } from './pages/lookup';
+import { Location, RouteConfig } from "vue-router/types/router";
+import Vue from "vue";
+import { Component, Watch } from "vue-property-decorator";
+import { Image } from "./attributes/image";
+import { ChoicePage } from "./pages/choice-page";
+import { Lookup } from "./pages/lookup";
 
-import './choice.scss';
+import "./choice.scss";
 
 @Component({
-  template: require('./choice.html')
+  template: require("./choice.html")
 })
 /**
  * @class ChoiceComponent
@@ -18,11 +18,11 @@ import './choice.scss';
  */
 export class ChoiceComponent extends Vue {
   // default to full row width for the image
-  dynamicClass: String = '12';
+  dynamicClass: String = "12";
   lookup: Lookup = new Lookup();
   page: ChoicePage;
   skipText: string;
-  loaded: boolean= false;
+  loaded: boolean = false;
 
   private planValueBefore: number;
   private newPlanValue: number;
@@ -43,7 +43,7 @@ export class ChoiceComponent extends Vue {
    * To change the pictures on the page when the parameter
    * changes watch for a change in the path.
    */
-  @Watch('$route.path')
+  @Watch("$route.path")
   pathChanged() {
     this.updatePageFromData();
   }
@@ -58,7 +58,9 @@ export class ChoiceComponent extends Vue {
     this.planValueBefore = +this.$route.query.plan;
     this.newPlanValue = this.minusValueForThisChoice();
     this.valueAlreadySelected = !!this.$route.query.complete;
-    this.skipText = this.valueAlreadySelected ? 'Remove Selection' : 'Skip to the next section';
+    this.skipText = this.valueAlreadySelected
+      ? "Remove Selection"
+      : "Skip to the next section";
     this.loaded = true;
   }
 
@@ -96,9 +98,9 @@ export class ChoiceComponent extends Vue {
    * @memberof ChoiceComponent
    */
   isSelected(image: Image): String {
-    let className: string = 'img-responsive';
+    let className: string = "img-responsive";
     if (image.isSelected(this.planValueBefore)) {
-      className += ' selected';
+      className += " selected";
     }
     return className;
   }
@@ -112,20 +114,19 @@ export class ChoiceComponent extends Vue {
   minusValueForThisChoice(): number {
     return this.page.imgRefs.reduce(
       (acc, image) => acc & ~(1 << image.position),
-      this.planValueBefore);
+      this.planValueBefore
+    );
   }
 
   /**
    * Common logic to change the page
    */
-  pageMove()  {
+  pageMove() {
     return {
-      path: this.valueAlreadySelected ? '/plan' : this.page.nextPage,
+      path: this.valueAlreadySelected ? "/plan" : this.page.nextPage,
       query: {
         plan: this.newPlanValue || 0
       }
     };
   }
-
-
 }

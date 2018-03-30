@@ -1,18 +1,17 @@
-import Vue from 'vue';
-import { SinonSpy } from 'sinon';
-import merge from 'lodash.merge';
-import { ILogger } from './log';
+import Vue from "vue";
+import { Component } from "vue";
+import { SinonSpy } from "sinon";
+import merge from "lodash.merge";
+import { ILogger } from "./log";
 
 export interface IComponents {
-  [key: string]: Vue.Component;
+  [key: string]: Component;
 }
 
 export class ComponentTest {
-
   public vm: Vue;
 
-  constructor(private template: string, private components: IComponents) {
-  }
+  constructor(private template: string, private components: IComponents) {}
 
   public createComponent(createOptions?: any): void {
     let options = {
@@ -23,17 +22,16 @@ export class ComponentTest {
     this.vm = new Vue(options).$mount();
   }
 
-  public async execute(callback: (vm: Vue) => Promise<void> | void): Promise<void> {
+  public async execute(
+    callback: (vm: Vue) => Promise<void> | void
+  ): Promise<void> {
     await Vue.nextTick();
     await callback(this.vm);
   }
-
 }
 
 export class MockLogger implements ILogger {
-
-  constructor(private loggerSpy: SinonSpy) {
-  }
+  constructor(private loggerSpy: SinonSpy) {}
 
   info(msg: any) {
     this.loggerSpy(msg);
