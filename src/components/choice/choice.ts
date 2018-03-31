@@ -53,7 +53,7 @@ export class ChoiceComponent extends Vue {
    */
   updatePageFromData() {
     this.page = this.lookup[this.$route.params.pageName];
-    const sections = 12 / this.page.imgRefs.length;
+    const sections = Math.floor(12 / this.page.imgRefs.length);
     this.dynamicClass = `col-xs-12 col-sm-${sections}`;
     this.planValueBefore = +this.$route.query.plan;
     this.newPlanValue = this.minusValueForThisChoice();

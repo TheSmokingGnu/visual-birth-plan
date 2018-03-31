@@ -15,6 +15,10 @@ import { NumberOfBabiesPage } from "./number-of-babies";
 import { ExaminationsPage } from "./examinations";
 import { CatchPage } from "./catch";
 import { CutCordPage } from "./cut-cord";
+import { Permission } from "./permission";
+import { LowLight } from "./low-light";
+import { DoNotDisturb } from "./do-not-disturb";
+import { DoNotSay } from "./do-not-say";
 
 export class Lookup {
   feel: FeelPage = new FeelPage();
@@ -31,6 +35,10 @@ export class Lookup {
   "special-spiritual": SpecialSpiritual = new SpecialSpiritual();
   interpreter: Interpreter = new Interpreter();
   "quiet-please": Quiet = new Quiet();
+  permission: Permission = new Permission();
+  "low-light": LowLight = new LowLight();
+  "do-not-disturb": DoNotDisturb = new DoNotDisturb();
+  "do-not-say": DoNotSay = new DoNotSay();
 
   constructor() {
     let position = 0;
