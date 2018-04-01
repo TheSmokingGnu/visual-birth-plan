@@ -6,7 +6,7 @@ export class DoNotSay extends PageContent implements ChoicePage {
   constructor() {
     super(
       [new Image(`do-not-say/do-not-say`, "Do not say during labour")],
-      "/plan",
+      "ctg-monitoring",
       "Are there any words that you would like to be avoided?"
     );
   }

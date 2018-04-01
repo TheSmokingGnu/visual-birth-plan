@@ -19,6 +19,10 @@ import { Permission } from "./permission";
 import { LowLight } from "./low-light";
 import { DoNotDisturb } from "./do-not-disturb";
 import { DoNotSay } from "./do-not-say";
+import { CtgMonitoring } from "./ctg-monitoring";
+import { Pushing } from "./pushing";
+import { BreakWaters } from "./break";
+import { FoetalScalpElectrode } from "./foetal-scalp-electrode";
 
 export class Lookup {
   feel: FeelPage = new FeelPage();
@@ -39,6 +43,10 @@ export class Lookup {
   "low-light": LowLight = new LowLight();
   "do-not-disturb": DoNotDisturb = new DoNotDisturb();
   "do-not-say": DoNotSay = new DoNotSay();
+  "ctg-monitoring": CtgMonitoring = new CtgMonitoring();
+  pushing: Pushing = new Pushing();
+  "break-waters": BreakWaters = new BreakWaters();
+  "foetal-scalp-electrode": FoetalScalpElectrode = new FoetalScalpElectrode();
 
   constructor() {
     let position = 0;
